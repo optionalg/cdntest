@@ -1,0 +1,17 @@
+#wrapper {
+    width: 500px;
+    margin: 30px auto;
+}
+
+p {
+    line-height: 40px;
+    font-family: Helvetica;
+    font-size: 14px;
+}
+
+p span {
+    vertical-align: top;
+    font-style: italic;
+    display: inline-block;
+    width: 250px;
+}
