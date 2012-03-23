@@ -18,6 +18,9 @@ function create_image_clock()
 
 $img = create_image_clock();
 
+header("Cache-Control: no-cache, must-revalidate");
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+
 if ($format === 'png') {
     header('Content-type: image/png');
     imagepng($img);
