@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('Europe/Paris');
+
 $format = isset($_GET['format']) ? $_GET['format'] : false;
 
 function create_image_clock()
