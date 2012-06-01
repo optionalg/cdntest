@@ -2,7 +2,7 @@
 
 date_default_timezone_set('Europe/Paris');
 
-$format = isset($_GET['format']) ? $_GET['format'] : false;
+define('ASSETS_DIR', __DIR__ . '/assets');
 
 function create_image_clock()
 {
@@ -13,24 +13,30 @@ function create_image_clock()
     $black = imagecolorallocate($img, 0, 0, 0);
     $date = date('H:i:s');
     imagefilledrectangle($img, 0, 0, $width, $height, $white);
-    $font = './PontanoSans-Regular.ttf';
+    $font = ASSETS_DIR . '/PontanoSans-Regular.ttf';
     imagettftext($img, 24, 0, 5, 32, $black, $font, $date);
     return $img;
 }
 
 $img = create_image_clock();
 
-header("Cache-Control: private");
+$format = @$_GET['format'] ?: false;
 
-if ($format === 'png') {
-    header('Content-type: image/png');
-    imagepng($img);
-} else if ($format === 'gif') {
-    header('Content-type: image/gif');
-    imagegif($img);
-} else {
-    header('Content-type: image/jpeg');
-    imagejpeg($img);
+switch ($format) {
+    case 'png':
+        header('Content-type: image/png');
+        imagepng($img);
+        break;
+
+    case 'gif':
+        header('Content-type: image/gif');
+        imagegif($img);
+        break;
+
+    default:
+        header('Content-type: image/jpeg');
+        imagejpeg($img);
+        break;
 }
 
 imagedestroy($img);
