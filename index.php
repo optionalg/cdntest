@@ -39,7 +39,7 @@ switch ($page) {
         imagepng($img);
         break;
 
-    case '302.gif':
+    case '302':
         header('Location: http://' . $_SERVER['HTTP_HOST'] . '/elephant.jpg');
         break;
 

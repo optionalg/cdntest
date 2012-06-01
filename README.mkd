@@ -2,7 +2,20 @@
 
 CDN test pages
 
-## Apache2 VirtualHost
+## Available test pages
+
+* `/clock.html` 3 clocks with different URLs
+* `/clock_image.php?format=<format>` where format is either gif, png, or jpeg
+* `/elephant.jpg` an image with a clock
+* `/cookies.jpg` same as `/elephant.jpg` with a timestamp valued cookie
+* `/nocache.png` same as `/elephant.jpg` with 'no-cache' headers
+* `/302` a simple redirection to `/elephant.jpg`
+* `/404.gif` same as `/elephant.jpg` with a `404` status code
+* `/500.gif` same as `/elephant.jpg` with a `500` status code
+
+## Install
+
+Use this apache virtual host configuration :
 
     <VirtualHost *:80>
         DocumentRoot "/path/to/root/directory"
