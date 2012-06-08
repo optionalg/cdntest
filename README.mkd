@@ -18,10 +18,10 @@ CDN test pages
 Use this apache virtual host configuration :
 
     <VirtualHost *:80>
-        DocumentRoot "/path/to/root/directory"
+        DocumentRoot "/path/to/directory/public"
         ServerName dev.local
 
-        <Directory "/path/to/root/directory">
+        <Directory "/path/to/directory/public">
             Options Indexes MultiViews FollowSymLinks
             AllowOverride All
             Order allow,deny

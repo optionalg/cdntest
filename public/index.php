@@ -1,10 +1,8 @@
 <?php
 
-date_default_timezone_set('Europe/Paris');
+require_once __DIR__ . '/../bootstrap.php';
 
-define('ASSETS_DIR', __DIR__ . '/assets');
-
-function create_image_elephant()
+function create_image_elephant($title = null)
 {
     $img = imagecreatefromjpeg(ASSETS_DIR . '/elephant.jpg');
     $white = imagecolorallocatealpha($img, 255, 255, 255, 40);
@@ -12,7 +10,10 @@ function create_image_elephant()
     $date = date('H:i:s');
     imagefilledrectangle($img, 0, 0, 645, 30, $white);
     $font = ASSETS_DIR . '/PontanoSans-Regular.ttf';
-    imagettftext($img, 14, 0, 560, 22, $black, $font, $date);
+    imagefttext($img, 14, 0, 560, 22, $black, $font, $date);
+    if ($title) {
+        imagettftext($img, 14, 0, 14, 22, $black, $font, $title);
+    }
     return $img;
 }
 
@@ -22,21 +23,21 @@ switch ($page) {
     case 'elephant.jpg':
         header('Content-type: image/jpeg');
         $img = create_image_elephant();
-        imagejpeg($img);
+        imagejpeg($img, null, 100);
         break;
 
     case 'cookies.jpg':
         setcookie('nocache', time());
         header('Content-type: image/jpeg');
-        $img = create_image_elephant();
-        imagejpeg($img);
+        $img = create_image_elephant('Test cookie');
+        imagejpeg($img, null, 100);
         break;
 
     case 'nocache.png':
         header('Pragma: no-cache');
         header('Content-type: image/png');
-        $img = create_image_elephant();
-        imagepng($img);
+        $img = create_image_elephant('Test no-cache');
+        imagepng($img, null, 100);
         break;
 
     case '302':
@@ -46,7 +47,7 @@ switch ($page) {
     case '404.gif':
         header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
         header('Content-type: image/gif');
-        $img = create_image_elephant();
+        $img = create_image_elephant('Test 404');
         imagegif($img);
         break;
 
@@ -54,9 +55,11 @@ switch ($page) {
     default:
         header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error');
         header('Content-type: image/gif');
-        $img = create_image_elephant();
+        $img = create_image_elephant('Test HTTP error');
         imagegif($img);
         break;
 }
 
-imagedestroy($img);
+if (isset($img)) {
+    imagedestroy($img);
+}

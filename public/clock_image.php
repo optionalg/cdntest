@@ -1,8 +1,6 @@
 <?php
 
-date_default_timezone_set('Europe/Paris');
-
-define('ASSETS_DIR', __DIR__ . '/assets');
+require_once __DIR__ . '/../bootstrap.php';
 
 function create_image_clock()
 {
