@@ -1,0 +1,14 @@
+{
+    "name": "kevinlebrun/cdntest",
+    "description": "CDN test pages",
+    "authors": [
+        {
+            "name": "Kevin Le Brun",
+            "email": "lebrun.k@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "guzzle/guzzle": ">=2.6.5"
+    }
+}

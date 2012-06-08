@@ -1,0 +1,67 @@
+body {
+    font-size: 67.5%;
+}
+
+#wrapper {
+    width: 1000px;
+    margin: auto;
+}
+
+form {
+    width: 100%;
+    text-align: center;
+}
+
+form input {
+    width: 60%;
+    border: 1px solid #ddd;
+    padding: 3px;
+}
+
+.container {
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.status {
+    font-weight: bold;
+    font-size: 3em;
+}
+
+.status.status-200 {
+    color: green;
+}
+
+.status.status-404,
+.status.status-500 {
+    color: red;
+}
+
+.value {
+    font-weight: bold;
+}
+
+ul.infos {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.infos li {
+    font-size: 1.5em;
+}
+
+#image {
+    width: 49%;
+    float: left;
+    margin-right: 1%;
+}
+
+#image img {
+    width: 100%;
+}
+
+#info {
+    width: 49%;
+    float: left;
+    margin-left: 1%;
+}

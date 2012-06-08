@@ -12,8 +12,14 @@ CDN test pages
 * `/302` a simple redirection to `/elephant.jpg`
 * `/404.gif` same as `/elephant.jpg` with a `404` status code
 * `/500.gif` same as `/elephant.jpg` with a `500` status code
+* `extract_headers.php` use this page to extract headers from above pages
 
 ## Install
+
+Install dependencies via composer :
+
+    $ curl -s http://getcomposer.org/installer | php
+    $ ./composer.phar install
 
 Use this apache virtual host configuration :
 
